@@ -22,6 +22,10 @@ class NP_SitemapExporter extends NucleusPlugin {
 	* 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA  or visit
 	* http://www.gnu.org/licenses/gpl.html
 	* ==========================================================================================
+	* Version History:
+	* v0.5-lm1 2015-01-02: by Leo
+	* - Tested and updated to run on PHP 5.4
+	* - Will now work correctly with LMReplacementVars plugin installed.
 	*/
 
 
@@ -30,15 +34,15 @@ class NP_SitemapExporter extends NucleusPlugin {
 	}
 
 	function getAuthor()  {
-		return 'Niels Leenheer';
+		return 'Niels Leenheer, Leo';
 	}
 
 	function getURL() {
-		return 'http://www.rakaz.nl/nucleus/extra/plugins';
+		return 'http://nucleus.slightlysome.net/plugins/sitemapexporter';
 	}
 
 	function getVersion() {
-		return '0.5';
+		return '0.5-lm1';
 	}
 
 	function getDescription() {
@@ -183,6 +187,8 @@ class NP_SitemapExporter extends NucleusPlugin {
 					echo $url['loc'] . "\n";
 				}
 			}
+				
+			exit;
 		}
 	}
 	
@@ -260,7 +266,6 @@ class NP_SitemapExporter extends NucleusPlugin {
 		$this->createOption('YahooSitemapURL', 'Alternative Yahoo! Sitemap URL', 'text', '');
 		$this->createBlogOption('IncludeSitemap', 'Include this blog in the Sitemap Exporter', 'yesno', 'yes');
 	}
-}		
-
-
+}
+		
 ?>
