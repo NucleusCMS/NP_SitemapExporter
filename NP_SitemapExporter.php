@@ -150,7 +150,8 @@ class NP_SitemapExporter extends NucleusPlugin {
 				}
 			}		
 			
-			$manager->notify('SiteMap', array ('sitemap' => & $sitemap));
+			$eventdata = array ('sitemap' => & $sitemap);
+			$manager->notify('SiteMap', $eventdata);
 			
 			if ($type == 'google')
 			{
