@@ -23,9 +23,10 @@ class NP_SitemapExporter extends NucleusPlugin {
 	* http://www.gnu.org/licenses/gpl.html
 	* ==========================================================================================
 	* Version History:
-	* v0.5-lm1 2015-01-02: by Leo
+	* v0.5-lm1 2015-01-02: by Leo  (http://nucleus.slightlysome.net/leo)
 	* - Tested and updated to run on PHP 5.4
 	* - Will now work correctly with LMReplacementVars plugin installed.
+	* - Will not show items in the sitemap with date and time in the future. 
 	*/
 
 
