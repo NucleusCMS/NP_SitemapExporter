@@ -117,6 +117,8 @@ class NP_SitemapExporter extends NucleusPlugin {
 						);
 					}
 					
+					$b = & $manager->getBlog($blog['bnumber']);
+					
 					$item_res = sql_query('
 						SELECT 
 							*,
@@ -126,6 +128,7 @@ class NP_SitemapExporter extends NucleusPlugin {
 						WHERE
 							iblog = '.$blog['bnumber'].' AND
 							idraft = 0
+							AND itime <= '.mysqldate($b->getCorrectTime()).'
 						ORDER BY 
 							inumber DESC
 					');
