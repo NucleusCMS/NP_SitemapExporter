@@ -78,7 +78,7 @@ class NP_SitemapExporter extends NucleusPlugin {
 					'.sql_table('blog').' 
 			');
 			
-			while ($blog = mysql_fetch_array($blog_res))
+			while ($blog = sql_fetch_array($blog_res))
 			{
 				if ($this->getBlogOption($blog['bnumber'], 'IncludeSitemap') == 'yes')
 				{
@@ -109,7 +109,7 @@ class NP_SitemapExporter extends NucleusPlugin {
 							catid
 					');
 					
-					while ($cat = mysql_fetch_array($cat_res))
+					while ($cat = sql_fetch_array($cat_res))
 					{
 						$sitemap[] = array(
 							'loc' => $this->_prepareLink($blog['bnumber'], createCategoryLink($cat['catid'])),
@@ -134,7 +134,7 @@ class NP_SitemapExporter extends NucleusPlugin {
 							inumber DESC
 					');
 					
-					while ($item = mysql_fetch_array($item_res))
+					while ($item = sql_fetch_array($item_res))
 					{
 						$tz = date('O', $item['timestamp']);
 						$tz = substr($tz, 0, 3) . ':' . substr($tz, 3, 2);	
@@ -175,7 +175,7 @@ class NP_SitemapExporter extends NucleusPlugin {
 					
 					while (list($key,$value) = each($url))
 					{
-						echo "\t\t<" . $key . ">" . htmlspecialchars($value, ENT_QUOTES) . "</" . $key . ">\n";
+						echo "\t\t<" . $key . ">" . htmlspecialchars($value, ENT_QUOTES, _CHARSET) . "</" . $key . ">\n";
 					}
 					
 					echo "\t</url>\n";
