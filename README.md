@@ -44,7 +44,7 @@ Don't add the RewriteEngine line if it already exists in your .htaccess file. Ea
 
 Version History
 -------------------------
-    0.5-lm1 2015-01-02 by Leo (http://nucleus.slightlysome.net/leo)
-        Tested and updated to run on PHP 5.4
-        Will now work correctly with LMReplacementVars plugin installed.
-        Will not show items in the sitemap with date and time in the future.
+0.5-lm1 2015-01-02 by Leo (http://nucleus.slightlysome.net/leo)
+Tested and updated to run on PHP 5.4
+Will now work correctly with LMReplacementVars plugin installed.
+Will not show items in the sitemap with date and time in the future.
