@@ -26,10 +26,10 @@ http://example.com/action.php?action=plugin&name=SitemapExporter&type=yahoo
 
 Options
 -------------------------
-    Ping Google after adding a new item.
-    Alternative Google Sitemap URL.
-    Alternative Yahoo! Sitemap URL.
-    Include this blog in the Sitemap Exporter.
+* Ping Google after adding a new item.
+* Alternative Google Sitemap URL.
+* Alternative Yahoo! Sitemap URL.
+* Include this blog in the Sitemap Exporter.
 
 Tips and Tricks
 -------------------------
@@ -37,8 +37,8 @@ To use the alternate paths for your sitelists, your might need to add some code 
 
 ```
 RewriteEngine on
-RewriteRule ^sitemap.xml$       /action.php?action=plugin&name=SitemapExporter&type=google      [L] 
-RewriteRule ^urllist.txt$       /action.php?action=plugin&name=SitemapExporter&type=yahoo       [L]
+RewriteRule ^sitemap.xml$ /action.php?action=plugin&name=SitemapExporter&type=google [L] 
+RewriteRule ^urllist.txt$ /action.php?action=plugin&name=SitemapExporter&type=yahoo  [L]
 ```
 Don't add the RewriteEngine line if it already exists in your .htaccess file. Each RewriteRule should be on a single line.
 
