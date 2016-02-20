@@ -16,6 +16,10 @@ The URLs for your blog are shown on the plugin overview page of your admin area.
 
 The URLs have the following formats. For Google:
 ```
+http://example.com/action.php?action=plugin&name=SitemapExporter
+```
+or
+```
 http://example.com/action.php?action=plugin&name=SitemapExporter&type=google
 ```
 
