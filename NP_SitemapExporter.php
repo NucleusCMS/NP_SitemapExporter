@@ -37,7 +37,8 @@ class NP_SitemapExporter extends NucleusPlugin {
     function getEventList() {return array('PostAddItem');}
     function supportsFeature($feature) {return in_array($feature,array('SqlTablePrefix'));}
     function getDescription() {
-        return sprintf('This plugin provides a sitemap for your website. Google Sitemap URL: %s, Yahoo! Sitemap URL: %s',$this->_sitemapURL('google'),$this->_sitemapURL('yahoo'));
+        $tpl = 'This plugin provides a sitemap for your website. Google Sitemap URL: %s, Yahoo! Sitemap URL: %s';
+        return sprintf($tpl,$this->_sitemapURL('google'),$this->_sitemapURL('yahoo'));
     }
     
     function doAction($type)
