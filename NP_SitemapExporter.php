@@ -41,10 +41,11 @@ class NP_SitemapExporter extends NucleusPlugin {
         return sprintf($tpl,$this->_sitemapURL('google'),$this->_sitemapURL('yahoo'));
     }
     
-    function doAction($type)
+    function doAction($type='')
     {
         global $CONF, $manager;
         
+        if (!$type) $type = 'google';
         if ($type !== 'google' && $type !== 'yahoo') return;
         
         $sitemap = array();
@@ -71,7 +72,8 @@ class NP_SitemapExporter extends NucleusPlugin {
                     );
                 }
                 
-                $cat_res = sql_query(sprintf('SELECT * FROM %s WHERE cblog=%s ORDER BY catid', sql_table('category'), $blog['bnumber']));
+                $params = array(sql_table('category'), $blog['bnumber']);
+                $cat_res = sql_query(vsprintf('SELECT * FROM %s WHERE cblog=%s ORDER BY catid', $params));
                 
                 while ($cat = sql_fetch_array($cat_res))
                 {
