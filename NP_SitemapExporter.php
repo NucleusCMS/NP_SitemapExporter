@@ -207,9 +207,7 @@ class NP_SitemapExporter extends NucleusPlugin {
         if ($this->getOption('PingGoogle') !== 'yes') return;
         
         $url = 'http://www.google.com/webmasters/sitemaps/ping?sitemap=' . urlencode($this->_sitemapURL());
-        
-        $fp = @fopen($url, 'r');
-        @fclose($fp);
+        file_get_contents($url);
     }
 
     function install() {
