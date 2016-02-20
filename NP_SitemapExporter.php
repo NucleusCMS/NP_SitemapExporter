@@ -195,25 +195,24 @@ class NP_SitemapExporter extends NucleusPlugin {
     function _sitemapURL($type = 'google') {
         global $CONF;
         
-        if ($type == 'google' && $this->getOption('GoogleSitemapURL') != '')
-            return $this->getOption('GoogleSitemapURL');
-        elseif ($type == 'yahoo' && $this->getOption('YahooSitemapURL') != '')
-            return $this->getOption('YahooSitemapURL');
-        else
-            return $CONF['ActionURL'] . '?action=plugin&name=SitemapExporter&type=' . $type;
+        if     ($type == 'google') $url = $this->getOption('GoogleSitemapURL');
+        elseif ($type == 'yahoo')  $url = $this->getOption('YahooSitemapURL');
+        
+        if($url=='')
+            $url = sprintf('%s?action=plugin&name=SitemapExporter&type=%s', $CONF['ActionURL'], $type);
+        return $url;
     }
     
     function event_PostAddItem(&$data) {
         if ($this->getOption('PingGoogle') !== 'yes') return;
-        
         $url = 'http://www.google.com/webmasters/sitemaps/ping?sitemap=' . urlencode($this->_sitemapURL());
         file_get_contents($url);
     }
 
     function install() {
-        $this->createOption('PingGoogle', 'Ping Google after adding a new item', 'yesno', 'yes');
-        $this->createOption('GoogleSitemapURL', 'Alternative Google Sitemap URL', 'text', '');
-        $this->createOption('YahooSitemapURL', 'Alternative Yahoo! Sitemap URL', 'text', '');
+        $this->createOption('PingGoogle',         'Ping Google after adding a new item',       'yesno', 'yes');
+        $this->createOption('GoogleSitemapURL',   'Alternative Google Sitemap URL',            'text', '');
+        $this->createOption('YahooSitemapURL',    'Alternative Yahoo! Sitemap URL',            'text', '');
         $this->createBlogOption('IncludeSitemap', 'Include this blog in the Sitemap Exporter', 'yesno', 'yes');
     }
 }
